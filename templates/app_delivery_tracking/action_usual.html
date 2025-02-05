@@ -1,1 +1,43 @@
-Usual html file
+[#if RESULT#]
+    <form action="?" method="post" name="frmList_delivery">
+    	<table class="table table-condensed table-responsive table-hover">
+    		<thead>
+    			<tr class="success">
+    				<th class="col-sm-1"><#LANG_DT_NAME_TRACK#></th>
+    				<th class="col-sm-2 hidden-xs"><#LANG_DT_NAME_DESCRIPTION#></th>
+    				<th class="col-sm-2">&nbsp;</th>
+    			</tr>
+    		</thead>
+    		[#begin RESULT#]
+        		<tr [#if IN_WAY > "14" && (NO_ACTIVE =="" || NO_ACTIVE =="0")#]class="warning"[#endif#][#if NO_ACTIVE == "1"#]class="danger"[#endif#]>
+        			<td>
+        				[#if TRACK!=""#]
+        					<b>[#TRACK#]</b>
+        				[#else#]
+        					&nbsp;
+        				[#endif#]
+        			</td>
+        			<td class="hidden-xs">
+        				[#if DESCRIPTION!=""#]
+        					[#DESCRIPTION#]
+        				[#else#]
+        					&nbsp;
+        				[#endif#]
+        			</td>
+        			<td style="vertical-align:middle;">
+        				<div style="width:110px;" class="btn-group">
+        					<a href="?view_mode=view_delivery&id=[#ID#]" class="btn btn-info btn-sm" data-toggle="tooltip" title="Переглянути"><i class="glyphicon glyphicon-eye-open"></i></a>
+        					<a href="?view_mode=edit_delivery&id=[#ID#]" class="btn btn-warning btn-sm" data-toggle="tooltip" title="Редагувати"><i class="glyphicon glyphicon-pencil"></i></a>
+        					<a href="?view_mode=move_delivery&id=[#ID#]" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Архівувати" onClick="return confirm('Ви впевнені що хочете перенести в архів?')"><i class="glyphicon glyphicon-inbox"></i></a>
+        			    </div>
+        			</td>
+        		</tr>
+    		[#end RESULT#]
+    	</table>
+    	<input type="hidden" name="data_source" value="<#DATA_SOURCE#>">
+    	<input type="hidden" name="view_mode" value="multiple_delivery">
+    </form>
+    <a href="?mode=list" class="btn btn-info btn-sm" data-toggle="tooltip" title="Оновити">Оновити зараз&nbsp;&nbsp;<i class="glyphicon glyphicon-refresh"></i></a>
+[#else RESULT#]
+    <p><font color="red"><#LANG_NO_RECORDS_FOUND#></font></p>
+[#endif RESULT#]

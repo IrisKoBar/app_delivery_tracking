@@ -1,0 +1,161 @@
+
+<h4><b><#LANG_DT_TITLE_TRACK#></b></h4>
+
+[#if RESULT#]
+    <table class="table table-condensed table-responsive">
+        <thead>
+    		<tr class="success">
+    			<th class="col-sm-2">Трек-номер</th>
+    			<th class="col-sm-2">Опис</th>
+    			<th class="col-sm-2">Перша реєстрація в системі</th>
+    			<th class="col-sm-2">Остання реєстрація в системі</th>
+    			<th class="col-sm-2">В дорозі (днів)</th>
+    		</tr>
+    	</thead>
+    	<tr>
+    		<td>
+    			[#if RESULT.TRACK!=""#]
+    				<b>[#RESULT.TRACK#]</b>
+    			[#else#]
+    				&nbsp;
+    			[#endif#]
+    		</td>
+    		<td>
+    			[#if RESULT.DESCRIPTION!=""#]
+    				[#RESULT.DESCRIPTION#]
+    			[#else#]
+    				&nbsp;
+    			[#endif#]
+    		</td>
+    		<td>
+    			[#if RESULT.START_DATA!=""#]
+    				[#RESULT.START_DATA#]
+    			[#else#]
+    				&nbsp;
+    			[#endif#]
+    		</td>
+    		<td>
+    			[#if RESULT.LAST_CHANGE!=""#]
+    				[#RESULT.LAST_CHANGE#]
+    			[#else#]
+    				&nbsp;
+    			[#endif#]
+    		</td>
+    		<td>
+    			[#if RESULT.IN_WAY!=""#]
+    				[#RESULT.IN_WAY#]
+    			[#else#]
+    				&nbsp;
+    			[#endif#]
+    		</td>
+    	</tr>
+    </table>
+    <table class="table table-condensed table-responsive">
+        <thead>
+    		<tr class="success">
+    			<th class="col-sm-2">Країна доставки</th>
+    			<th class="col-sm-2">Адреса доставки</th>
+    			<th class="col-sm-2">Отримувач</th>
+    			<th class="col-sm-2">Вага (кг)</th>
+    			<th class="col-sm-2">Тип відправлення</th>
+    		</tr>
+    	</thead>
+    	<tr>
+    		<td>
+    			[#if RESULT.DEST!=""#]
+    				<b>[#RESULT.DEST#]</b>
+    			[#else#]
+    				&nbsp;
+    			[#endif#]
+    		</td>
+    		<td>
+    			[#if RESULT.ADDRESS!=""#]
+    				[#RESULT.ADDRESS#]
+    			[#else#]
+    				&nbsp;
+    			[#endif#]
+    		</td>
+    		<td>
+    			[#if RESULT.ADDRESSEE!=""#]
+    				[#RESULT.ADDRESSEE#]
+    			[#else#]
+    				&nbsp;
+    			[#endif#]
+    		</td>
+    		<td>
+    			[#if RESULT.WEIGHT!=""#]
+    				[#RESULT.WEIGHT#]
+    			[#else#]
+    				&nbsp;
+    			[#endif#]
+    		</td>
+    		<td>
+    			[#if RESULT.SERVICE_TYPE!=""#]
+    				[#RESULT.SERVICE_TYPE#]
+    			[#else#]
+    				&nbsp;
+    			[#endif#]
+    		</td>
+    	</tr>
+    </table>
+    <div>
+    	[#if RESULT.URL!=""#]
+    	    <a class="btn btn-info" href="[#RESULT.URL#]" target="_blank"><#LANG_DT_NAME_URL#></a>
+    	[#else#]
+    	    &nbsp;
+    	[#endif#]
+    	<a href="?view_mode=edit_delivery&id=[#ID#]" class="btn btn-warning" data-toggle="tooltip" title="<#LANG_DT_BTN_DESC#>"><i class="glyphicon glyphicon-pencil"></i></a>
+        <a href="?view_mode=move_delivery&id=[#ID#]" class="btn btn-danger" data-toggle="tooltip" title="<#LANG_DT_BTN_ARCH#>" onClick="return confirm('Ви впевнені що хочете перенести в архів?')"><i class="glyphicon glyphicon-inbox"></i></a>
+    </div>
+[#else RESULT#]
+    <div><p class="text-danger"><#LANG_NO_RECORDS_FOUND#></p></div>
+[#endif RESULT#]
+
+<h4><b><#LANG_DT_TITLE_EVENT#></b></h4>
+
+[#if EVENTS#]
+    <table class="table table-condensed table-responsive table-hover">
+    	<thead>
+    		<tr class="success">
+    			<th class="col-sm-2"><#LANG_DT_NAME_DATA#></th>
+    			<th class="col-sm-2"><#LANG_DT_NAME_CARRIERS#></th>
+    			<th class="col-sm-4"><#LANG_DT_NAME_EVENT#></th>
+    			<th class="col-sm-4 visible-md visible-lg"><#LANG_DT_NAME_LOCATION#></th>
+    		</tr>
+    	</thead>
+    	[#begin EVENTS#]
+    		<tr>
+    			<td>
+    				[#if EVENT_DATA!=""#]
+    					[#EVENT_DATA#]
+    				[#else#]
+    					&nbsp;
+    				[#endif#]
+    			</td>
+    			<td>
+    				[#if CARRIER!=""#]
+    					[#CARRIER#]
+    				[#else#]
+    					&nbsp;
+    				[#endif#]
+    			</td>
+    			<td>
+    				[#if EVENT_DESC!=""#]
+    					[#EVENT_DESC#]
+    				[#else#]
+    					&nbsp;
+    				[#endif#]
+    			</td>
+    			<td class="visible-md visible-lg">
+    				[#if EVENT_LOCATION!=""#]
+    					[#EVENT_LOCATION#]
+    				[#else#]
+    					&nbsp;
+    				[#endif#]
+    			</td>
+    		</tr>
+    	[#end EVENTS#]
+    </table>
+[#else EVENTS#]
+    <div><p class="text-danger"><#LANG_NO_RECORDS_FOUND#></p></div>
+[#endif EVENTS#]

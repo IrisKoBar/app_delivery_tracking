@@ -1,0 +1,72 @@
+[#if RESULT#]
+    <form action="?" method="post" name="frmList_delivery">
+    	<table class="table table-condensed table-responsive table-hover">
+    		<thead>
+    			<tr class="success">
+    				<th class="col-sm-1"><#LANG_DT_NAME_TRACK#></th>
+    				<th class="col-sm-3 hidden-xs"><#LANG_DT_NAME_DESCRIPTION#></th>
+    				<th class="col-sm-1 visible-md visible-lg"><#LANG_DT_NAME_IN_WAY#></th>
+    				<th class="col-sm-2 hidden-xs"><#LANG_DT_NAME_START_DATA#></th>
+    				<th class="col-sm-2 hidden-xs"><#LANG_DT_NAME_LAST_DATA#></th>
+    				<th class="col-sm-2"><#LANG_DT_NAME_ARCHIVED_DATA#></th>
+    				<th class="col-sm-1">&nbsp;</th>
+    			</tr>
+    		</thead>
+    		[#begin RESULT#]
+        		<tr>
+        			<td>
+        				[#if TRACK!=""#]
+        					<b>[#TRACK#]</b>
+        				[#else#]
+        					&nbsp;
+        				[#endif#]
+        			</td>
+        			<td class="hidden-xs">
+        				[#if DESCRIPTION!=""#]
+        					[#DESCRIPTION#]
+        				[#else#]
+        					&nbsp;
+        				[#endif#]
+        			</td>
+        			<td class="visible-md visible-lg">
+        				[#if IN_WAY!=""#]
+        					[#IN_WAY#]
+        				[#else#]
+        					&nbsp;
+        				[#endif#]
+        			</td>
+        			<td class="hidden-xs">
+        				[#if START_DATA!=""#]
+        					[#START_DATA#]
+        				[#else#]
+        					&nbsp;
+        				[#endif#]
+        			</td>
+        			<td class="hidden-xs">
+        				[#if LAST_DATA!=""#]
+        					[#LAST_DATA#]
+        				[#else#]
+        					&nbsp;
+        				[#endif#]
+        			</td>
+        			<td>
+        				[#if ARCHIVED_DATA!=""#]
+        					[#ARCHIVED_DATA#]
+        				[#else#]
+        					&nbsp;
+        				[#endif#]
+        			</td>
+        			<td>
+        				<div style="width:50px;" class="btn-group">
+        					<a href="?view_mode=delete_delivery&id=[#ID#]" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Видалити" onClick="return confirm('Ви впевнені що хочете видалити?')"><i class="glyphicon glyphicon-remove"></i></a>
+        			    </div>
+        			</td>
+        		</tr>
+    		[#end RESULT#]
+    	</table>
+    	<input type="hidden" name="data_source" value="<#DATA_SOURCE#>">
+    	<input type="hidden" name="view_mode" value="multiple_delivery">
+    </form>
+[#else RESULT#]
+    <p><font color="red"><#LANG_NO_RECORDS_FOUND#></font></p>
+[#endif RESULT#]

@@ -1,0 +1,83 @@
+<style>
+    .tooltip-inner
+    {
+        background-color: SteelBlue; 
+        color: white;
+        padding: 10px;
+        font-size: 12px;
+        margin-top: 5px;
+    }
+    .tooltip.bottom > .tooltip-arrow
+    {
+        border-bottom: 10px solid SteelBlue;
+    }
+    td
+    {
+        vertical-align: middle;
+    }
+    .logo
+    {
+        width: 50px;
+        height: 50px;
+        margin-right: 15px;
+    }
+    .navbar-btn
+    {
+        margin:12px 3px;
+        width: 80px;
+    }
+    .navbar-brand
+    {
+        padding: 5px 15px 5px 5px;
+    }
+    p.navbar-brand
+    {
+        margin:0px;
+    }
+</style>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-brand"><img class="img-thumbnail logo" src="<#ROOTHTML#>img/modules/app_delivery_tracking.png" alt="logo">DeliveryTracking</p>
+        </div>
+        <div class="nav navbar-nav">
+            <a href="?view_mode=search_delivery" data-toggle="tooltip" title="Стартова сторінка" class="btn navbar-btn [#if VIEW_MODE='search_delivery' || VIEW_MODE=''#]btn-success[#else VIEW_MODE#]btn-warning[#endif VIEW_MODE#]"><i class="glyphicon glyphicon-home"></i></a>
+            <a href="?view_mode=create_delivery" data-toggle="tooltip" title="Додати новий трек-номер" class="btn navbar-btn [#if VIEW_MODE='create_delivery'#]btn-success[#else VIEW_MODE#]btn-warning[#endif VIEW_MODE#]"><i class="glyphicon glyphicon-plus"></i></a>
+            <a href="?view_mode=search_archive_delivery" data-toggle="tooltip" title="Список архівних доставок" class="btn navbar-btn [#if VIEW_MODE='search_archive_delivery'#]btn-success[#else VIEW_MODE#]btn-warning[#endif VIEW_MODE#]"><i class="glyphicon glyphicon-inbox"></i></a>
+            <a href="?view_mode=settings_delivery" data-toggle="tooltip" title="Налаштування" class="btn navbar-btn [#if VIEW_MODE='settings_delivery'#]btn-success[#else VIEW_MODE#]btn-warning[#endif VIEW_MODE#]"><i class="glyphicon glyphicon-cog"></i></a>
+        </div>
+        [#if TIME_COUNT#]
+        <div class="nav navbar-nav navbar-right">
+            <p class="navbar-text"><#TIME_COUNT#></p>
+        </div>
+        [#endif TIME_COUNT#]
+    </div>
+</nav>
+[#if ERR_API_KEY#]
+    <p><font color="red">Не заповнено поле з ключем API - додаток не може працювати коректно.<br/>Будьласка перейдіть в налаштування додатку та заповніть необхідні поля</font></p>
+[#endif ERR_API_KEY#]
+[#if VIEW_MODE="search_delivery" || VIEW_MODE=""#]
+	[#inc delivery_search_admin.html#]
+[#endif VIEW_MODE#]
+
+[#if VIEW_MODE="search_archive_delivery"#]
+	[#inc delivery_search_archive.html#]
+[#endif VIEW_MODE#]
+
+[#if VIEW_MODE="edit_delivery"#]
+	[#inc delivery_edit.html#]
+[#endif VIEW_MODE#]
+
+[#if VIEW_MODE="view_delivery"#]
+	[#inc delivery_view.html#]
+[#endif VIEW_MODE#]
+
+[#if VIEW_MODE="create_delivery"#]
+	[#inc delivery_create.html#]
+[#endif VIEW_MODE#]
+
+[#if VIEW_MODE="settings_delivery"#]
+	[#inc delivery_settings.html#]
+[#endif VIEW_MODE#]
+
+<script>$(document).ready(function(){$('[data-toggle="tooltip"]').tooltip({placement: "bottom"});});</script>

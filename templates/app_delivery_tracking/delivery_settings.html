@@ -1,0 +1,90 @@
+<form class="form-horizontal" action="#" method="post" enctype="multipart/form-data" name="frmEdit" >
+    <div class="form-group [#if API_KEY#]has-success[#else API_KEY#]has-error[#endif API_KEY#] has-feedback">
+        <label class="control-label col-sm-3" for="api_key">API KEY&nbsp;<span class='glyphicon [#if API_KEY#]glyphicon-ok[#else API_KEY#]glyphicon-remove[#endif API_KEY#] form-control-feedback'></span></label>
+        <div class="col-sm-6 input-group">
+            <input type="text" class="form-control" id="api_key" placeholder="Введіть ваш API сервісу rapidapi.com" name="api_key" value="[#API_KEY#]">
+            <span data-toggle="tooltip" title="Обов'язковий параметр" class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span> 
+        </div>
+    </div>
+    <div class="form-group [#if PREFIX#]has-success[#else PREFIX#]has-warning[#endif PREFIX#] has-feedback">
+        <label class="control-label col-sm-3 form-control-feedback" for="example">Команди для взаємодії&nbsp;</label>
+        <div class="col-sm-6 input-group">
+            <pre id="example">[#if PREFIX#][#PREFIX#]&nbsp;[#UPDATE_COMAND#] - цей запит примусово оновлює інформацію про доставки<br>[#PREFIX#]&nbsp;трек-номер - цей запит вносить в базу нову посилку[#else PREFIX#]Не задано префікс![#endif PREFIX#]</pre>
+        </div>
+    </div>
+    <div class="form-group [#if PREFIX#]has-success[#else PREFIX#]has-warning[#endif PREFIX#] has-feedback">
+        <label class="control-label col-sm-3" for="prefix">Префікс для команд&nbsp;<span class='glyphicon [#if PREFIX#]glyphicon-ok[#else PREFIX#]glyphicon-remove[#endif PREFIX#] form-control-feedback'></span></label>
+        <div class="col-sm-2 input-group">          
+            <input type="text" class="form-control" id="prefix" data-toggle="tooltip" title="Не використовуйте символи < > / \ [ ] ( ) ^ . | ? * + { } $" name="prefix" value="[#PREFIX#]">
+            <span data-toggle="tooltip" title="Ведіть текст-тригер який буде передувати команді/трек-номеру" class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
+        </div>
+    </div>
+    <div class="form-group [#if PREFIX#]has-success[#else PREFIX#]has-warning[#endif PREFIX#] has-feedback">
+        <label class="control-label col-sm-3" for="update_comand">Команда для оновлення&nbsp;<span class='glyphicon [#if PREFIX#]glyphicon-ok[#else PREFIX#]glyphicon-ban-circle[#endif PREFIX#] form-control-feedback'></span></label>        
+        <div class="col-sm-2 input-group">
+            <input data-toggle="tooltip" title="Не використовуйте символи < > / \ [ ] ( ) ^ . | ? * + { } $" type="text" class="form-control" id="update_comand" name="update_comand" value="[#UPDATE_COMAND#]">
+            <span data-toggle="tooltip" title="Команда що буде давати вказівку програмі оновити дані відправлень прям зараз" class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
+        </div>
+    </div>
+    <div class="form-group [#if EVERY_HOUR#]has-success[#else EVERY_HOUR#]has-warning[#endif EVERY_HOUR#] has-feedback">
+        <label class="control-label col-sm-3" for="every_hour">Частота оновлень кожні&nbsp;<span class='glyphicon [#if EVERY_HOUR#]glyphicon-ok[#else EVERY_HOUR#]glyphicon-remove[#endif EVERY_HOUR#] form-control-feedback'></span></label>
+        <div class="col-sm-2 input-group">
+            <input type="number" class="form-control" id="every_hour" min="0" max="24" name="every_hour" value="[#EVERY_HOUR#]">
+            <span data-toggle="tooltip" title="Введіть кількість годин (0 - 24) - інтервалу автоматичного оновлення інформації про відправлення. Якщо 0 то автооновлення буде вимкнено" class="input-group-addon">год.</span>
+        </div>
+    </div>
+    <div class="form-group [#if EVERY_HOUR#]has-success[#else EVERY_HOUR#]has-warning[#endif EVERY_HOUR#] has-feedback">
+        <label class="control-label col-sm-3" for="start_with">Автоматично оновлювати&nbsp;<span class='glyphicon [#if EVERY_HOUR#]glyphicon-ok[#else EVERY_HOUR#]glyphicon-ban-circle[#endif EVERY_HOUR#] form-control-feedback'></span></label>
+        <div class="col-sm-2 input-group" data-toggle="tooltip" title="Початок періоду автоматичного оновлення даних">
+            <span class="input-group-addon">з</span>
+            <input type="time" class="form-control" id="start_with" name="start_with" value="[#START_WITH#]">
+        </div>
+        <div class="col-sm-2 input-group" data-toggle="tooltip" title="Кінець періоду автоматичного оновлення даних">
+            <span class="input-group-addon">до</span>
+            <input type="time" class="form-control" id="finish_before" name="finish_before" value="[#FINISH_BEFORE#]">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-3" for="set_lang">Налаштування мови&nbsp;</label>
+        <div class="col-sm-4 input-group">
+            <select class="form-control" id="set_lang" name="set_lang">
+                <option value="AS_IS" [#if SET_LANG="AS_IS" || SET_LANG=""#] selected[#endif#]>Без перекладу</option>
+                <option value="EN_MT" [#if SET_LANG="EN_MT"#] selected[#endif#]>Перекладати на англійську</option>
+                <option value="UK_MT" [#if SET_LANG="UK_MT"#] selected[#endif#]>Перекладати українською</option>
+                <option value="RU_MT" [#if SET_LANG="RU_MT"#] selected[#endif#]>Перекладати на російську</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-3" for="lvl">Рівень сповіщення&nbsp;</label>
+        <div class="col-sm-2 input-group">
+            <input type="text" class="form-control" id="lvl" pattern="[0-9]{1,2}" name="lvl" value="[#LVL#]">
+            <span data-toggle="tooltip" title="Введіть необхідний рівень сповіщень для функції say()" class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-3" for="auto_archived">Автоматично архівувати&nbsp;</label>
+        <div class="checkbox col-sm-2">
+            <input type="checkbox" name="auto_archived" value="1"[#if AUTO_ARCHIVED="1"#] checked[#endif#]>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-3" for="say_update">Сповіщати про зміну статусу&nbsp;</label>
+        <div class="checkbox col-sm-2">
+            <input type="checkbox" name="say_update" id="say_update" value="1"[#if SAY_UPDATE="1"#] checked[#endif#]>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-3" for="log_ok">Увімкнути Log&nbsp;</label>
+        <div class="checkbox col-sm-2">
+            <input type="checkbox" name="log_ok" id="log_ok" value="1"[#if LOG_OK="1"#] checked[#endif#]>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3">
+            <button style="width:220px;" type="submit" name="subm" value="Submit" class="btn btn-info"><#LANG_UPDATE#></button>
+            <input type="hidden" name="view_mode" value="update_settings">
+		    <input type="hidden" name="mode" value="update">
+        </div>
+    </div>
+</form>

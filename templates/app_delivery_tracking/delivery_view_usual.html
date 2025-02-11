@@ -1,0 +1,72 @@
+<h4><b><#LANG_DT_TITLE_TRACK#></b></h4>
+
+[#if RESULT#]
+    <table class="table table-condensed table-responsive">
+        <thead>
+    		<tr class="success">
+    			<th class="col-sm-6"><#LANG_DT_TAB_TRACK#></th>
+    			<th class="col-sm-6"><#LANG_DT_TAB_DATA_UPDATE#></th>
+    		</tr>
+    	</thead>
+    	<tr>
+    		<td>
+    			[#if RESULT.TRACK!=""#]
+    				<b>[#RESULT.TRACK#]</b>
+    			[#else#]
+    				&nbsp;
+    			[#endif#]
+    		</td>
+    		<td>
+    			[#if RESULT.LAST_CHANGE!=""#]
+    				[#RESULT.LAST_CHANGE#]
+    			[#else#]
+    				&nbsp;
+    			[#endif#]
+    		</td>
+    	</tr>
+    </table>
+    <div>
+    	[#if RESULT.URL!=""#]
+    	    <a class="btn btn-info" href="[#RESULT.URL#]" target="_blank" title="<#LANG_DT_BTN_URL#>"><i class="glyphicon glyphicon-globe"></i></a>
+    	[#else#]
+    	    &nbsp;
+    	[#endif#]
+    	<a href="?view_mode=edit_delivery&id=[#ID#]" class="btn btn-warning" data-toggle="tooltip" title="<#LANG_DT_BTN_DESC#>"><i class="glyphicon glyphicon-pencil"></i></a>
+        <a href="?view_mode=move_delivery&id=[#ID#]" class="btn btn-danger" data-toggle="tooltip" title="<#LANG_DT_BTN_ARCH#>" onClick="return confirm('<#LANG_DT_MSG_ARCH#>')"><i class="glyphicon glyphicon-inbox"></i></a>
+    </div>
+[#else RESULT#]
+    <div><p class="text-danger"><#LANG_NO_RECORDS_FOUND#></p></div>
+[#endif RESULT#]
+
+<h4><b><#LANG_DT_TITLE_EVENT#></b></h4>
+
+[#if EVENTS#]
+    <table class="table table-condensed table-responsive table-hover">
+    	<thead>
+    		<tr class="success">
+    			<th class="col-sm-3"><#LANG_DT_TAB_DATA#></th>
+    			<th class="col-sm-9"><#LANG_DT_TAB_DESCRIPTION#></th>
+    		</tr>
+    	</thead>
+    	[#begin EVENTS#]
+    		<tr>
+    			<td>
+    				[#if EVENT_DATA!=""#]
+    					[#EVENT_DATA#]
+    				[#else#]
+    					&nbsp;
+    				[#endif#]
+    			</td>
+    			<td>
+    				[#if EVENT_DESC!=""#]
+    					[#EVENT_DESC#]
+    				[#else#]
+    					&nbsp;
+    				[#endif#]
+    			</td>
+    		</tr>
+    	[#end EVENTS#]
+    </table>
+[#else EVENTS#]
+    <div><p class="text-danger"><#LANG_NO_RECORDS_FOUND#></p></div>
+[#endif EVENTS#]

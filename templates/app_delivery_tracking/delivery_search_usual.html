@@ -1,0 +1,47 @@
+[#if RESULT#]
+    <form action="?" method="post" name="frmList_delivery">
+    	<table class="table table-condensed table-responsive table-hover">
+    		<thead>
+    			<tr class="success">
+    				<th class="col-sm-3"><#LANG_DT_TAB_TRACK#></th>
+    				<th class="col-sm-3 hidden-xs"><#LANG_DT_TAB_DESCRIPTION#></th>
+    				<th class="col-sm-3"><#LANG_DT_TAB_IN_WAY#></th>
+    				<th class="col-sm-3"></th>
+    			</tr>
+    		</thead>
+    		[#begin RESULT#]
+        		<tr>
+        			<td>
+        				[#if TRACK!=""#]
+        					<b>[#TRACK#]</b>
+        				[#else#]
+        					&nbsp;
+        				[#endif#]
+        			</td>
+        			<td class="hidden-xs">
+        				[#if DESCRIPTION!=""#]
+        					[#DESCRIPTION#]
+        				[#else#]
+        					&nbsp;
+        				[#endif#]
+        			</td>
+        			<td>
+        				[#if IN_WAY!=""#]
+        					[#IN_WAY#]
+        				[#else#]
+        					&nbsp;
+        				[#endif#]
+        			</td>
+        			<td>
+        				<a href="?view_mode=view_delivery&id=[#ID#]" class="btn btn-info" data-toggle="tooltip" title="<#LANG_DT_BTN_VIEW#>"><i class="glyphicon glyphicon-eye-open"></i></a>
+        			</td>
+        		</tr>
+    		[#end RESULT#]
+    	</table>
+    	<input type="hidden" name="data_source" value="<#DATA_SOURCE#>">
+    	<input type="hidden" name="view_mode" value="multiple_delivery">
+    </form>
+[#else RESULT#]
+    <p><font color="red"><#LANG_NO_RECORDS_FOUND#></font></p>
+[#endif RESULT#]
+<a href="?mode=list" class="btn btn-info" data-toggle="tooltip" title="<#LANG_DT_BTN_UPD#>"><#LANG_DT_BTN_UPD#>&nbsp;&nbsp;<i class="glyphicon glyphicon-refresh"></i></a>

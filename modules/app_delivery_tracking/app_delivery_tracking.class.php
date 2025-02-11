@@ -326,7 +326,7 @@ class app_delivery_tracking extends module {
                 if(isset($data['status']) && $data['status'] == 'CREATED')
                 {
 		            $out['OK'] = 1;
-                    $str = "<#LANG_DT_MSG_CREARE#>";
+                    $str = "<#LANG_DT_MSG_CREATE#>";
                     $sql['POST_ID'] = $data['pkgId'];
                     $sql['TRACK'] = $data['trackCode'];
                     $sql['DESCRIPTION'] = $newDescr ?? '';
@@ -338,7 +338,7 @@ class app_delivery_tracking extends module {
                 }
                 else
                 {
-                    $str = "<#LANG_DT_MSG_CREARE_ERR#>";
+                    $str = "<#LANG_DT_MSG_CREATE_ERR#>";
                     $this->deliveryLog($data);
                     $out['OK'] = 0;
                 }

@@ -5,11 +5,11 @@
     <table class="table table-condensed table-responsive">
         <thead>
     		<tr class="success">
-    			<th class="col-sm-2">Трек-номер</th>
-    			<th class="col-sm-2">Опис</th>
-    			<th class="col-sm-2">Перша реєстрація в системі</th>
-    			<th class="col-sm-2">Остання реєстрація в системі</th>
-    			<th class="col-sm-2">В дорозі (днів)</th>
+    			<th class="col-sm-2"><#LANG_DT_TAB_TRACK#></th>
+    			<th class="col-sm-2"><#LANG_DT_TAB_DESCRIPTION#></th>
+    			<th class="col-sm-2"><#LANG_DT_TAB_DATA_START#></th>
+    			<th class="col-sm-2"><#LANG_DT_TAB_DATA_UPDATE#></th>
+    			<th class="col-sm-2"><#LANG_DT_TAB_IN_WAY#></th>
     		</tr>
     	</thead>
     	<tr>
@@ -53,11 +53,11 @@
     <table class="table table-condensed table-responsive">
         <thead>
     		<tr class="success">
-    			<th class="col-sm-2">Країна доставки</th>
-    			<th class="col-sm-2">Адреса доставки</th>
-    			<th class="col-sm-2">Отримувач</th>
-    			<th class="col-sm-2">Вага (кг)</th>
-    			<th class="col-sm-2">Тип відправлення</th>
+    			<th class="col-sm-2"><#LANG_DT_TAB_DEST#></th>
+    			<th class="col-sm-2"><#LANG_DT_TAB_ADDRESS#></th>
+    			<th class="col-sm-2"><#LANG_DT_TAB_ADDRESSEE#></th>
+    			<th class="col-sm-2"><#LANG_DT_TAB_WEIGHT#></th>
+    			<th class="col-sm-2"><#LANG_DT_TAB_TYPE#></th>
     		</tr>
     	</thead>
     	<tr>
@@ -100,12 +100,12 @@
     </table>
     <div>
     	[#if RESULT.URL!=""#]
-    	    <a class="btn btn-info" href="[#RESULT.URL#]" target="_blank"><#LANG_DT_NAME_URL#></a>
+    	    <a class="btn btn-info" href="[#RESULT.URL#]" target="_blank" title="<#LANG_DT_BTN_URL#>"><#LANG_DT_BTN_URL#></a>
     	[#else#]
     	    &nbsp;
     	[#endif#]
     	<a href="?view_mode=edit_delivery&id=[#ID#]" class="btn btn-warning" data-toggle="tooltip" title="<#LANG_DT_BTN_DESC#>"><i class="glyphicon glyphicon-pencil"></i></a>
-        <a href="?view_mode=move_delivery&id=[#ID#]" class="btn btn-danger" data-toggle="tooltip" title="<#LANG_DT_BTN_ARCH#>" onClick="return confirm('Ви впевнені що хочете перенести в архів?')"><i class="glyphicon glyphicon-inbox"></i></a>
+        <a href="?view_mode=move_delivery&id=[#ID#]" class="btn btn-danger" data-toggle="tooltip" title="<#LANG_DT_BTN_ARCH#>" onClick="return confirm('<#LANG_DT_MSG_ARCH#>')"><i class="glyphicon glyphicon-inbox"></i></a>
     </div>
 [#else RESULT#]
     <div><p class="text-danger"><#LANG_NO_RECORDS_FOUND#></p></div>
@@ -117,10 +117,10 @@
     <table class="table table-condensed table-responsive table-hover">
     	<thead>
     		<tr class="success">
-    			<th class="col-sm-2"><#LANG_DT_NAME_DATA#></th>
-    			<th class="col-sm-2"><#LANG_DT_NAME_CARRIERS#></th>
-    			<th class="col-sm-4"><#LANG_DT_NAME_EVENT#></th>
-    			<th class="col-sm-4 visible-md visible-lg"><#LANG_DT_NAME_LOCATION#></th>
+    			<th class="col-sm-2"><#LANG_DT_TAB_DATA#></th>
+    			<th class="col-sm-2"><#LANG_DT_TAB_CARRIER#></th>
+    			<th class="col-sm-4"><#LANG_DT_TAB_DESCRIPTION#></th>
+    			<th class="col-sm-4 visible-md visible-lg"><#LANG_DT_TAB_LOCATION#></th>
     		</tr>
     	</thead>
     	[#begin EVENTS#]

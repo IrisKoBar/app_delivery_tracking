@@ -3,12 +3,12 @@
     	<table class="table table-condensed table-responsive table-hover">
     		<thead>
     			<tr class="success">
-    				<th class="col-sm-1"><#LANG_DT_NAME_TRACK#></th>
-    				<th class="col-sm-3 hidden-xs"><#LANG_DT_NAME_DESCRIPTION#></th>
-    				<th class="col-sm-1 visible-md visible-lg"><#LANG_DT_NAME_IN_WAY#></th>
-    				<th class="col-sm-2 hidden-xs"><#LANG_DT_NAME_START_DATA#></th>
-    				<th class="col-sm-2 hidden-xs"><#LANG_DT_NAME_LAST_DATA#></th>
-    				<th class="col-sm-2"><#LANG_DT_NAME_ARCHIVED_DATA#></th>
+    				<th class="col-sm-1"><#LANG_DT_TAB_TRACK#></th>
+    				<th class="col-sm-3 hidden-xs"><#LANG_DT_TAB_DESCRIPTION#></th>
+    				<th class="col-sm-1 visible-md visible-lg"><#LANG_DT_TAB_IN_WAY#></th>
+    				<th class="col-sm-2 hidden-xs"><#LANG_DT_TAB_DATA_START#></th>
+    				<th class="col-sm-2 hidden-xs"><#LANG_DT_TAB_DATA_UPDATE#></th>
+    				<th class="col-sm-2"><#LANG_DT_TAB_DATA_ARCH#></th>
     				<th class="col-sm-1">&nbsp;</th>
     			</tr>
     		</thead>
@@ -57,8 +57,9 @@
         				[#endif#]
         			</td>
         			<td>
-        				<div style="width:50px;" class="btn-group">
-        					<a href="?view_mode=delete_delivery&id=[#ID#]" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Видалити" onClick="return confirm('Ви впевнені що хочете видалити?')"><i class="glyphicon glyphicon-remove"></i></a>
+        				<div style="width:75px;" class="btn-group">
+        				    <a href="?view_mode=restore_delivery&id=[#ID#]" class="btn btn-info btn-sm" data-toggle="tooltip" title="<#LANG_DT_BTN_RESTORE#>" onClick="return confirm('<#LANG_DT_MSG_RESTORE#>')"><i class="glyphicon glyphicon-refresh"></i></a>
+        					<a href="?view_mode=delete_delivery&id=[#ID#]" class="btn btn-danger btn-sm" data-toggle="tooltip" title="<#LANG_DT_BTN_DEL#>" onClick="return confirm('<#LANG_DT_MSG_DEL#>')"><i class="glyphicon glyphicon-remove"></i></a>
         			    </div>
         			</td>
         		</tr>

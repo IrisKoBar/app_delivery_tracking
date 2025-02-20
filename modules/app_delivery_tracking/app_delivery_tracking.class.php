@@ -471,7 +471,7 @@ class app_delivery_tracking extends module {
             	$sql['LAST_DATA'] = (count($ev) > 0) ? $ev[count($ev)-1]['EVENT_DATA'] : "";
             	$sql['LAST_DESC'] = (count($ev) > 0) ? $ev[count($ev)-1]['EVENT_DESC'] : "";
             	$sql['LAST_LOCATION'] = (count($ev) > 0) ? $ev[count($ev)-1]['EVENT_LOCATION'] : "";
-				$sql['IN_WAY'] = (count($ev) > 0) ? round(($ev[count($ev)-1]['TIME'] - $ev[0]['TIME']) / 86400) : 0;
+				$sql['IN_WAY'] = (count($ev) > 0) ? round((time() - $ev[0]['TIME']) / 86400) : 0;
             	$lastActive = round((time() - strtotime($sql['LAST_CHANGE'])) / 86400);
             	$sql['NO_ACTIVE'] = ($lastActive > 3)? 1 : 0;
             	$sql['TASK'] = ((bool) $this->config['AUTO_ARCHIVED'] && $lastActive > 5)? strval(time()+60).':MOVE' : "";
@@ -650,16 +650,16 @@ class app_delivery_tracking extends module {
             {
                 $s = ($newTime - $lastTime) % 60;
                 $m = (($newTime - $lastTime - $s) % 3600) / 60;
-                $str = "<#LANG_DT_MSG_UPD_TEXT#>".strval($m)."<#LANG_DT_MSG_UPD_M#>";
+                $str = LANG_DT_MSG_UPD_TEXT.strval($m).LANG_DT_MSG_UPD_M;
             }
             else
             {
-                $str = "<#LANG_DT_MSG_UPD_NOW#>";
+                $str = LANG_DT_MSG_UPD_NOW;
             }
     	}
     	else
     	{
-    	    $str = "<#LANG_DT_MSG_UPD_NOT#>";
+    	    $str = LANG_DT_MSG_UPD_NOT;
     	}
         return $str;
     }
